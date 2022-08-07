@@ -19,7 +19,7 @@ const mapDispatchToProps = (dispatch) => ({
 
 const ItemPreview = (props) => {
   const item = props.item;
-  let image1 = item.image;
+  // let image1 = item.image;
   const handleClick = (ev) => {
     ev.preventDefault();
     if (item.favorited) {
@@ -28,33 +28,34 @@ const ItemPreview = (props) => {
       props.favorite(item.slug);
     }
   };
-
+  console.log(item.image);
   return (
     <div
       className="card bg-dark border-light p-3"
       style={{ borderRadius: "20px" }}
     >
+      {/* {
+          (image1 === undefined) ? 
+          <img
+          alt="placeholder"
+          src="./placeholder.png"
+          className="card-img-top item-img"
+          style={{ borderRadius: "20px" }} />:
+          <img
+          alt="item"
+          src={item.image}
+          className="card-img-top item-img"
+          style={{ borderRadius: "20px" }}
+        /> }
+       */}
 
-      
-        {(image1 === undefined ) ?  <img
-        alt="placeholder"
-        src={process.env.PUBLIC_URL + '/placeholder.png' }
-        className="card-img-top item-img"
-        style={{ borderRadius: "20px" }}
-      /> : <img
-      alt="item"
-      src={item.image}
-      className="card-img-top item-img"
-      style={{ borderRadius: "20px" }}
-    />
-        }
-      
-      {/* <img
+      <img
         alt="item"
-        src={item.image}
+        src={item.image ? item.image : "./placeholder.png"}
         className="card-img-top item-img"
         style={{ borderRadius: "20px" }}
-      /> */}
+      />
+
       <div className="card-body">
         <Link to={`/item/${item.slug}`} className="text-white">
           <h3 className="card-title">{item.title}</h3>
