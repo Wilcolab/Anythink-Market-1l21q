@@ -38,7 +38,7 @@ const ItemPreview = (props) => {
       
       
         {
-        (image == 0 ) ?  
+        (image === 0 ) ?  
          <img
         alt="placeholder"
         src={process.env.PUBLIC_URL + '/placeholder.png' }
